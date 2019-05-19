@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+        <div class="Tok">
+            <input type="button" value="Получить курс доллара" onclick="find();" />
+            <p id="token" />
+        </div>
+
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script>
+        var uri = '/api/product/getCurrency';
+
+        function find() {
+          $.ajax(uri)
+                .done(function (data) {
+                    $('#token').text("Курс доллара в рублях - " + data);
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#token').text('Error: '+ err);
+                });
+        }
+    </script>
+</body>
+</html>
